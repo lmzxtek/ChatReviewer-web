@@ -156,7 +156,6 @@ inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)
         default="""* Overall Review
 Please briefly summarize the main points and contributions of this paper.
 xxx
-
 * Paper Strength 
 Please provide a list of the strengths of this paper, including but not limited to: innovative and practical methodology, insightful empirical findings or in-depth theoretical analysis, 
 well-structured review of relevant literature, and any other factors that may make the paper valuable to readers. (Maximum length: 2,000 characters) 
@@ -176,8 +175,7 @@ Please provide a numbered list of specific and clear questions that pertain to t
 The questions should be formulated in a manner that, after the authors have answered them during the rebuttal, it would enable a more thorough assessment of the paper's quality. (Maximum length: 2,000 characters)
 *Overall score (1-10)
 The paper is scored on a scale of 1-10, with 10 being the full mark, and 6 stands for borderline accept. Then give the reason for your rating.
-xxx
-"""
+xxx"""
     ),
     gradio.inputs.File(label="请上传论文PDF(必填)"),
     gradio.inputs.Radio(choices=["English", "Chinese"],
@@ -187,7 +185,7 @@ xxx
 
 chat_reviewer_gui = gradio.Interface(fn=main,
                                  inputs=inp,
-                                 outputs = [gradio.Textbox(lines=20, label="评审结果"), gradio.Textbox(lines=2, label="资源统计")],
+                                 outputs = [gradio.Textbox(lines=22, label="评审结果"), gradio.Textbox(lines=2, label="资源统计")],
                                  title=title,
                                  description=description)
 
