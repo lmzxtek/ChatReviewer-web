@@ -6,8 +6,7 @@ def gpt(api_key):
      model="gpt-3.5-turbo", 
      messages=[{"role": "user", "content": "Generate a fake news story"}]
     )
-
-return completion.choices[0].message.content
+    return completion.choices[0].message.content
 
 demo = gr.Interface(fn=gpt, inputs="text", outputs="text")
     
