@@ -4,7 +4,6 @@ from collections import Counter
 import json
 import re
 
-
 class Paper:
     def __init__(self, path, title='', url='', abs='', authors=[]):
         # 初始化函数，根据pdf路径初始化Paper对象                
