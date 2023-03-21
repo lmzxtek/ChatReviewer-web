@@ -3,6 +3,7 @@ import gradio as gr
 import openai
 
 def gpt(api_key):
+    openai.api_key = api_key
     completion = openai.ChatCompletion.create(
      model="gpt-3.5-turbo", 
      messages=[{"role": "user", "content": "Generate a fake news story"}]
