@@ -1,4 +1,5 @@
 import os
+import gradio as gr
 import openai
 
 def gpt(api_key):
