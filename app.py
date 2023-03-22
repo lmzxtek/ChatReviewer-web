@@ -135,7 +135,7 @@ def main(api, review_format, paper_pdf, language):
 title = "ChatReviewer"
 # 描述
 description = '''<div align='left'>
-ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。其用途如下：
+<strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。</strong>其用途如下：
 
 1.对论文进行批量总结和评论，提高科研人员的文献阅读和理解的效率。
 
@@ -144,6 +144,8 @@ ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手�
 3.辅助论文审稿，给出参考的审稿意见，提高审稿效率和审稿质量。（⭐️禁止复制粘贴！）
 
 ⭐️⭐️⭐️ 声明：请对审稿的论文负责，不要直接复制粘贴ChatReviewer生成的任何审稿意见！！！
+
+如果觉得很卡，可以请点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
 </div>
 '''
 
