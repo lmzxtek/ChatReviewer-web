@@ -135,28 +135,28 @@ def main(api, review_format, paper_pdf, language):
 
 ########################################################################################################    
 # 标题
-title = "ChatReviewer🤖"
+title = "🤖ChatReviewer🤖"
 # 描述
 
 description = '''<div align='left'>
 
 <img align='right' src='https://i.imgtg.com/2023/03/22/94PLN.png' width="300">
-<strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。</strong>其用途如下。
+<strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。</strong>其用途如下：
 
-1.对论文进行批量总结和评论，提高科研人员的文献阅读和理解的效率。
+⭐️对论文进行快速总结和评审，提高科研人员的文献阅读和理解的效率，进更研究前沿。
 
-2.对自己的论文进行评估，根据ChatReviewer生成的审稿意见进行查漏补缺，进一步提高自己的论文质量。
+⭐️对自己的论文进行评审，根据ChatReviewer生成的审稿意见进行查漏补缺，进一步提高自己的论文质量。
 
-3.辅助论文审稿，给出参考的审稿意见，提高审稿效率和审稿质量。（⭐️禁止复制粘贴！）
+⭐️辅助论文审稿，给出参考的审稿意见，提高审稿效率和审稿质量。（🈲：禁止用于未公开论文的评审！）
 
-⭐️⭐️⭐️ 声明：请对审稿的论文负责，不要直接复制粘贴ChatReviewer生成的任何审稿意见！！！
+本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star！（[如何获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
 
 如果觉得很卡，可以请点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
 </div>
 '''
 
 # 创建Gradio界面
-inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串,[如何获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/))",
+inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)",
                           default="",
                           type='password'),
     gradio.inputs.Textbox(
