@@ -62,7 +62,7 @@ class Reviewer:
             text += 'Title:' + paper.title + '. '
             text += 'Abstract: ' + paper.section_texts['Abstract']
         except:
-            paper_Abstract = paper.section_texts[:2]
+            paper_Abstract = 'Abstract'
         openai.api_key = self.api
         messages = [
             {"role": "system",
