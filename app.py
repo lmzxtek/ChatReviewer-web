@@ -159,7 +159,7 @@ description = '''<div align='left'>
 inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)",
                           default="",
                           type='password'),
-    gradio.inputs.Textbox(
+    gradio.inputs.Textbox(lines=10,
         label="请输入特定的评审要求和格式",
         default="""* Overall Review
 Please briefly summarize the main points and contributions of this paper.
