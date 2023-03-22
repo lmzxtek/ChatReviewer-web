@@ -58,8 +58,11 @@ class Reviewer:
     def stage_1(self, paper):
         htmls = []
         text = ''
-        text += 'Title: ' + paper.title + '. '
-        text += 'Abstract: ' + paper.section_texts['Abstract']
+        try:
+            text += 'Title:' + paper.title + '. '
+            text += 'Abstract: ' + paper.section_texts['Abstract']
+        except error:
+            pass
         openai.api_key = self.api
         messages = [
             {"role": "system",
