@@ -149,7 +149,7 @@ description = '''<div align='left'>
 
 ⭐️辅助论文审稿，给出参考意见，提高审稿效率和质量。（🈲：禁止直接复制生成的评论用于任何论文审稿工作！）
 
-如果觉得很卡，可以请点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
+如果觉得很卡，可以点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
 
 本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star，欢迎大佬赞助让本项目快速成长！💗（[获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
 </div>
