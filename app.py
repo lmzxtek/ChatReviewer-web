@@ -159,7 +159,7 @@ description = '''<div align='left'>
 inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)",
                           default="",
                           type='password'),
-    gradio.inputs.Textbox(lines=10,
+    gradio.inputs.Textbox(lines=5,
         label="请输入特定的评审要求和格式",
         default="""* Overall Review
 Please briefly summarize the main points and contributions of this paper.
@@ -193,7 +193,7 @@ xxx"""
 
 chat_reviewer_gui = gradio.Interface(fn=main,
                                  inputs=inp,
-                                 outputs = [gradio.Textbox(lines=22, label="评审结果"), gradio.Textbox(lines=2, label="资源统计")],
+                                 outputs = [gradio.Textbox(lines=25, label="评审结果"), gradio.Textbox(lines=2, label="资源统计")],
                                  title=title,
                                  description=description)
 
