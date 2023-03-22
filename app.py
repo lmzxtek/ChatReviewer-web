@@ -151,7 +151,7 @@ description = '''<div align='left'>
 
 如果觉得很卡，可以请点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
 
-本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star！（[如何获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
+本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star，欢迎大佬赞助让本项目快速成长！💗（[获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
 </div>
 '''
 
