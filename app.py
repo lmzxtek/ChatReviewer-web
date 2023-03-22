@@ -151,7 +151,7 @@ description = '''<div align='left'>
 
 如果觉得很卡，可以点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
 
-本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star，欢迎大佬赞助让本项目快速成长！💗（[获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
+本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star和Fork，也欢迎大佬赞助让本项目快速成长！💗（[获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
 </div>
 '''
 
@@ -160,7 +160,7 @@ inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)
                           default="",
                           type='password'),
     gradio.inputs.Textbox(lines=5,
-        label="请输入特定的评审要求和格式",
+        label="请输入特定的评审要求和格式(否则为默认格式)",
         default="""* Overall Review
 Please briefly summarize the main points and contributions of this paper.
 xxx
