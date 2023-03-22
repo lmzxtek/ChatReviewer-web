@@ -22,12 +22,6 @@ class Reviewer:
     
         self.max_token_num = 4096
         self.encoding = tiktoken.get_encoding("gpt2")
-    
-    def validateTitle(self, title):
-        # 修正论文的路径格式
-        rstr = r"[\/\\\:\*\?\"\<\>\|]" # '/ \ : * ? " < > |'
-        new_title = re.sub(rstr, "_", title) # 替换为下划线
-        return new_title
 
 
     def review_by_chatgpt(self, paper_list):
@@ -131,7 +125,7 @@ def main(api, review_format, paper_pdf, language):
         # 开始判断是路径还是文件：   
         comments, total_token_used = reviewer1.review_by_chatgpt(paper_list=paper_list)
     time_used = time.time() - start_time
-    output2 ="使用token数："+ str(total_token_used)+"\n花费时间："+ str(time_used) +"秒"
+    output2 ="使用token数："+ str(total_token_used)+"\n花费时间："+ str(round(time_used, 2)) +"秒"
     return comments, output2
         
 
@@ -160,7 +154,7 @@ inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)
                           default="",
                           type='password'),
     gradio.inputs.Textbox(
-        label="请输入特定的审稿格式",
+        label="请输入特定的评审要求和格式",
         default="""* Overall Review
 Please briefly summarize the main points and contributions of this paper.
 xxx
