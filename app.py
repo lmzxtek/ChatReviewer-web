@@ -51,12 +51,15 @@ class Reviewer:
 
     def stage_1(self, paper):
         htmls = []
-        text = ''
+        text = 'Abstract'
+        paper_Abstract
         try:
             text += 'Title:' + paper.title + '. '
-            text += 'Abstract: ' + paper.section_texts['Abstract']
+            paper_Abstract = paper.section_texts['Abstract']
+            
         except:
-            paper_Abstract = 'Abstract'
+            pass
+        text += 'Abstract: ' + paper_Abstract
         openai.api_key = self.api
         messages = [
             {"role": "system",
