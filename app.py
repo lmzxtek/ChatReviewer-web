@@ -38,7 +38,7 @@ class Reviewer:
             try:
                 text += 'Title:' + paper.title + '. '
                 text += 'Abstract: ' + paper.section_texts['Abstract']
-            except error:
+            except:
                 pass
             intro_title = next((item for item in paper.section_names if 'ntroduction' in item.lower()), None)
             if intro_title is not None:
@@ -61,7 +61,7 @@ class Reviewer:
         try:
             text += 'Title:' + paper.title + '. '
             text += 'Abstract: ' + paper.section_texts['Abstract']
-        except error:
+        except:
             pass
         openai.api_key = self.api
         messages = [
