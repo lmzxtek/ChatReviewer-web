@@ -35,8 +35,11 @@ class Reviewer:
             sections_of_interest = self.stage_1(paper)
             # extract the essential parts of the paper
             text = ''
-            text += 'Title:' + paper.title + '. '
-            text += 'Abstract: ' + paper.section_texts['Abstract']
+            try:
+                text += 'Title:' + paper.title + '. '
+                text += 'Abstract: ' + paper.section_texts['Abstract']
+            except error:
+                pass
             intro_title = next((item for item in paper.section_names if 'ntroduction' in item.lower()), None)
             if intro_title is not None:
                 text += 'Introduction: ' + paper.section_texts[intro_title]
