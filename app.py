@@ -95,7 +95,7 @@ class Reviewer:
         input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/text_token)
         input_text = "This is the paper for your review:" + text[:input_text_index]
         messages=[
-                {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format +" Please answer in {}.".format(self.language)},
+                {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format +" Must be output in {}.".format(self.language)},
                 {"role": "user", "content": input_text},
             ]
                 
