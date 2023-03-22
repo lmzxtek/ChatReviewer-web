@@ -139,7 +139,7 @@ title = "🤖ChatReviewer🤖"
 # 描述
 
 description = '''<div align='left'>
-<img align='right' src='https://i.imgtg.com/2023/03/22/94PLN.png' width="270">
+<img align='right' src='http://i.imgtg.com/2023/03/22/94PLN.png' width="270">
 
 <strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。</strong>其用途如下：
 
