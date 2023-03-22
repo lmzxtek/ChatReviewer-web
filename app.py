@@ -156,7 +156,7 @@ description = '''<div align='left'>
 '''
 
 # 创建Gradio界面
-inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串)",
+inp = [gradio.inputs.Textbox(label="请输入你的API-key(sk开头的字符串,[如何获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/))",
                           default="",
                           type='password'),
     gradio.inputs.Textbox(
