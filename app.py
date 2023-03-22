@@ -51,8 +51,8 @@ class Reviewer:
 
     def stage_1(self, paper):
         htmls = []
-        text = 'Abstract'
-        paper_Abstract
+        text = ''
+        paper_Abstract = 'Abstract'
         try:
             text += 'Title:' + paper.title + '. '
             paper_Abstract = paper.section_texts['Abstract']
