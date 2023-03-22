@@ -62,7 +62,7 @@ class Reviewer:
             text += 'Title:' + paper.title + '. '
             text += 'Abstract: ' + paper.section_texts['Abstract']
         except:
-            pass
+            paper_Abstract = paper.section_texts[:2]
         openai.api_key = self.api
         messages = [
             {"role": "system",
@@ -72,7 +72,7 @@ class Reviewer:
                         f"Now I will give you the title and abstract and the headings of potential sections. "
                         f"You need to reply at most two headings. Then I will further provide you the full information, includes aforementioned sections and at most two sections you called for.\n\n"
                         f"Title: {paper.title}\n\n"
-                        f"Abstract: {paper.section_texts['Abstract']}\n\n"
+                        f"Abstract: {paper_Abstract}\n\n"
                         f"Potential Sections: {paper.section_names[2:-1]}\n\n"
                         f"Follow the following format to output your choice of sections:"
                         f"{{chosen section 1}}, {{chosen section 2}}\n\n"},
