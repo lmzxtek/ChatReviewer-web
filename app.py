@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import re
-import io
+from io import BytesIO
 import datetime
 import time
 import openai, tenacity
@@ -63,7 +63,7 @@ class Reviewer:
         return result, response.usage.total_tokens        
 
     def extract_chapter(self, pdf_path):
-        file_object = io.BytesIO(pdf_path)
+        file_object = BytesIO(pdf_path)
         # 创建一个PDF阅读器对象
         pdf_reader = PyPDF2.PdfReader(file_object)
         # 获取PDF的总页数
@@ -156,7 +156,7 @@ The questions should be formulated in a manner that, after the authors have answ
 The paper is scored on a scale of 1-10, with 10 being the full mark, and 6 stands for borderline accept. Then give the reason for your rating.
 xxx"""
     ),
-    gradio.inputs.File(label="请上传论文PDF(必填)"),
+    gradio.inputs.File(label="请上传论文PDF(必填)",type="bytes"),
     gradio.inputs.Radio(choices=["English", "Chinese"],
                         default="English",
                         label="选择输出语言"),
