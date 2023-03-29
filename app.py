@@ -62,29 +62,28 @@ class Reviewer:
         return result, response.usage.total_tokens        
 
     def extract_chapter(self, pdf_path):
-        with open(pdf_path, 'rb') as file:
-            # 创建一个PDF阅读器对象
-            pdf_reader = PyPDF2.PdfReader(file)
-            # 获取PDF的总页数
-            num_pages = len(pdf_reader.pages)
-            # 初始化提取状态和提取文本
-            extraction_started = False
-            extracted_text = ""
-            # 遍历PDF中的每一页
-            for page_number in range(num_pages):
-                page = pdf_reader.pages[page_number]
-                page_text = page.extract_text()
-    
-                # 如果找到了章节标题，开始提取
-                if 'Abstract'.lower() in page_text.lower() and not extraction_started:
-                    extraction_started = True
-                    page_number_start = page_number
-                # 如果提取已开始，将页面文本添加到提取文本中
-                if extraction_started:
-                    extracted_text += page_text
-                    # 如果找到下一章节标题，停止提取
-                    if page_number_start + 1 < page_number:
-                        break
+        # 创建一个PDF阅读器对象
+        pdf_reader = PyPDF2.PdfReader(pdf_path)
+        # 获取PDF的总页数
+        num_pages = len(pdf_reader.pages)
+        # 初始化提取状态和提取文本
+        extraction_started = False
+        extracted_text = ""
+        # 遍历PDF中的每一页
+        for page_number in range(num_pages):
+            page = pdf_reader.pages[page_number]
+            page_text = page.extract_text()
+
+            # 如果找到了章节标题，开始提取
+            if 'Abstract'.lower() in page_text.lower() and not extraction_started:
+                extraction_started = True
+                page_number_start = page_number
+            # 如果提取已开始，将页面文本添加到提取文本中
+            if extraction_started:
+                extracted_text += page_text
+                # 如果找到下一章节标题，停止提取
+                if page_number_start + 1 < page_number:
+                    break
         return extracted_text
 
 def main(api, review_format, paper_pdf, language):  
