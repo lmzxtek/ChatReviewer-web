@@ -20,7 +20,7 @@ class Reviewer:
 
         self.language = language
     
-        self.max_token_num = 4096
+        self.max_token_num = 4097
         self.encoding = tiktoken.get_encoding("gpt2")
 
 
@@ -60,6 +60,9 @@ class Reviewer:
         except:
             pass
         text += 'Abstract: ' + paper_Abstract
+        text_token = len(self.encoding.encode(text))
+        input_text_index = int(len(text)*(self.max_token_num-1000)/text_token)
+        text = text[:input_text_index]
         openai.api_key = self.api
         messages = [
             {"role": "system",
