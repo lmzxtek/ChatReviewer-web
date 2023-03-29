@@ -61,8 +61,9 @@ class Reviewer:
             pass
         text += 'Abstract: ' + paper_Abstract
         text_token = len(self.encoding.encode(text))
-        input_text_index = int(len(text)*(self.max_token_num-1000)/text_token)
-        text = text[:input_text_index]
+        if text_token > self.max_token_num/2 - 800:
+            input_text_index = int(len(text)*((self.max_token_num/2)-500)/text_token)
+            text = text[:input_text_index]
         openai.api_key = self.api
         messages = [
             {"role": "system",
