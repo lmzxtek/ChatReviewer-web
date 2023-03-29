@@ -25,7 +25,7 @@ class Reviewer:
 
 
     def review_by_chatgpt(self, paper_list):
-        text = extract_chapter(paper_list)
+        text = self.extract_chapter(paper_list)
         chat_review_text, total_token_used = self.chat_review(text=text)            
         return chat_review_text, total_token_used
 
