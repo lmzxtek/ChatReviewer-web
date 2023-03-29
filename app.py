@@ -62,8 +62,9 @@ class Reviewer:
         return result, response.usage.total_tokens        
 
     def extract_chapter(self, pdf_path):
+        file_object = io.BytesIO(pdf_path)
         # 创建一个PDF阅读器对象
-        pdf_reader = PyPDF2.PdfReader(pdf_path)
+        pdf_reader = PyPDF2.PdfReader(file_object)
         # 获取PDF的总页数
         num_pages = len(pdf_reader.pages)
         # 初始化提取状态和提取文本
