@@ -85,7 +85,7 @@ class Reviewer:
                     # 如果找到下一章节标题，停止提取
                     if page_number_start + 1 < page_number:
                         break
-    return extracted_text
+        return extracted_text
 
 def main(api, review_format, paper_pdf, language):  
     start_time = time.time()
