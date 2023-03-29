@@ -8,7 +8,7 @@ import argparse
 import configparser
 import json
 import tiktoken
-from get_paper_from_pdf import Paper
+import PyPDF2
 import gradio
 
 # 定义Reviewer类
@@ -25,69 +25,11 @@ class Reviewer:
 
 
     def review_by_chatgpt(self, paper_list):
-        for paper_index, paper in enumerate(paper_list):
-            sections_of_interest = self.stage_1(paper)
-            # extract the essential parts of the paper
-            text = ''
-            try:
-                text += 'Title:' + paper.title + '. '
-                text += 'Abstract: ' + paper.section_texts['Abstract']
-            except:
-                pass
-            intro_title = next((item for item in paper.section_names if 'ntroduction' in item.lower()), None)
-            if intro_title is not None:
-                text += 'Introduction: ' + paper.section_texts[intro_title]
-            # Similar for conclusion section
-            conclusion_title = next((item for item in paper.section_names if 'onclusion' in item), None)
-            if conclusion_title is not None:
-                text += 'Conclusion: ' + paper.section_texts[conclusion_title]
-            for heading in sections_of_interest:
-                if heading in paper.section_names:
-                    text += heading + ': ' + paper.section_texts[heading]
-            chat_review_text, total_token_used = self.chat_review(text=text)            
+        text = extract_chapter(paper_list)
+        chat_review_text, total_token_used = self.chat_review(text=text)            
         return chat_review_text, total_token_used
-            
 
-
-    def stage_1(self, paper):
-        htmls = []
-        text = ''
-        paper_Abstract = 'Abstract'
-        try:
-            text += 'Title:' + paper.title + '. '
-            paper_Abstract = paper.section_texts['Abstract']
-            
-        except:
-            pass
-        text += 'Abstract: ' + paper_Abstract
-        text_token = len(self.encoding.encode(text))
-        if text_token > (self.max_token_num/2) - 1000:
-            input_text_index = int(len(text)*((self.max_token_num/2)-1200)/text_token)
-            text = text[:input_text_index]
-        openai.api_key = self.api
-        messages = [
-            {"role": "system",
-             "content": f"You are a professional reviewer. "
-                        f"I will give you a paper. You need to review this paper and discuss the novelty and originality of ideas, correctness, clarity, the significance of results, potential impact and quality of the presentation. "
-                        f"Due to the length limitations, I am only allowed to provide you the abstract, introduction, conclusion and at most two sections of this paper."
-                        f"Now I will give you the title and abstract and the headings of potential sections. "
-                        f"You need to reply at most two headings. Then I will further provide you the full information, includes aforementioned sections and at most two sections you called for.\n\n"
-                        f"Title: {paper.title}\n\n"
-                        f"Abstract: {paper_Abstract}\n\n"
-                        f"Potential Sections: {paper.section_names[2:-1]}\n\n"
-                        f"Follow the following format to output your choice of sections:"
-                        f"{{chosen section 1}}, {{chosen section 2}}\n\n"},
-            {"role": "user", "content": text},
-        ]
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages,
-        )
-        result = ''
-        for choice in response.choices:
-            result += choice.message.content
-        # print(result)
-        return result.split(',')
+   
 
     @tenacity.retry(wait=tenacity.wait_exponential(multiplier=1, min=4, max=10),
                     stop=tenacity.stop_after_attempt(5),
@@ -118,7 +60,32 @@ class Reviewer:
         print("total_token_used:", response.usage.total_tokens)
         print("response_time:", response.response_ms/1000.0, 's')                    
         return result, response.usage.total_tokens        
-                                        
+
+    def extract_chapter(self, pdf_path):
+        with open(pdf_path, 'rb') as file:
+            # 创建一个PDF阅读器对象
+            pdf_reader = PyPDF2.PdfReader(file)
+            # 获取PDF的总页数
+            num_pages = len(pdf_reader.pages)
+            # 初始化提取状态和提取文本
+            extraction_started = False
+            extracted_text = ""
+            # 遍历PDF中的每一页
+            for page_number in range(num_pages):
+                page = pdf_reader.pages[page_number]
+                page_text = page.extract_text()
+    
+                # 如果找到了章节标题，开始提取
+                if 'Abstract'.lower() in page_text.lower() and not extraction_started:
+                    extraction_started = True
+                    page_number_start = page_number
+                # 如果提取已开始，将页面文本添加到提取文本中
+                if extraction_started:
+                    extracted_text += page_text
+                    # 如果找到下一章节标题，停止提取
+                    if page_number_start + 1 < page_number:
+                        break
+    return extracted_text
 
 def main(api, review_format, paper_pdf, language):  
     start_time = time.time()
@@ -126,7 +93,7 @@ def main(api, review_format, paper_pdf, language):
         return "请输入完整内容！"
     # 判断PDF文件
     else:
-        paper_list = [Paper(path=paper_pdf)]
+        paper_list = paper_pdf
         # 创建一个Reader对象
         reviewer1 = Reviewer(api, review_format, paper_pdf, language)
         # 开始判断是路径还是文件：   
