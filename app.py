@@ -62,28 +62,29 @@ class Reviewer:
         return result, response.usage.total_tokens        
 
     def extract_chapter(self, pdf_path):
-        # 创建一个PDF阅读器对象
-        pdf_reader = PyPDF2.PdfReader(pdf_path)
-        # 获取PDF的总页数
-        num_pages = len(pdf_reader.pages)
-        # 初始化提取状态和提取文本
-        extraction_started = False
-        extracted_text = ""
-        # 遍历PDF中的每一页
-        for page_number in range(num_pages):
-            page = pdf_reader.pages[page_number]
-            page_text = page.extract_text()
-
-            # 如果找到了章节标题，开始提取
-            if 'Abstract'.lower() in page_text.lower() and not extraction_started:
-                extraction_started = True
-                page_number_start = page_number
-            # 如果提取已开始，将页面文本添加到提取文本中
-            if extraction_started:
-                extracted_text += page_text
-                # 如果找到下一章节标题，停止提取
-                if page_number_start + 1 < page_number:
-                    break
+        with open(pdf_path, 'rb') as file:
+            # 创建一个PDF阅读器对象
+            pdf_reader = PyPDF2.PdfReader(file)
+            # 获取PDF的总页数
+            num_pages = len(pdf_reader.pages)
+            # 初始化提取状态和提取文本
+            extraction_started = False
+            extracted_text = ""
+            # 遍历PDF中的每一页
+            for page_number in range(num_pages):
+                page = pdf_reader.pages[page_number]
+                page_text = page.extract_text()
+    
+                # 如果找到了章节标题，开始提取
+                if 'Abstract'.lower() in page_text.lower() and not extraction_started:
+                    extraction_started = True
+                    page_number_start = page_number
+                # 如果提取已开始，将页面文本添加到提取文本中
+                if extraction_started:
+                    extracted_text += page_text
+                    # 如果找到下一章节标题，停止提取
+                    if page_number_start + 1 < page_number:
+                        break
         return extracted_text
 
 def main(api, review_format, paper_pdf, language):  
@@ -92,11 +93,10 @@ def main(api, review_format, paper_pdf, language):
         return "请输入完整内容！"
     # 判断PDF文件
     else:
-        paper_list = paper_pdf
         # 创建一个Reader对象
         reviewer1 = Reviewer(api, review_format, paper_pdf, language)
         # 开始判断是路径还是文件：   
-        comments, total_token_used = reviewer1.review_by_chatgpt(paper_list=paper_list)
+        comments, total_token_used = reviewer1.review_by_chatgpt(paper_list=paper_pdf)
     time_used = time.time() - start_time
     output2 ="使用token数："+ str(total_token_used)+"\n花费时间："+ str(round(time_used, 2)) +"秒"
     return comments, output2
