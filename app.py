@@ -19,13 +19,13 @@ class Reviewer:
         self.review_format = review_format
 
         self.language = language
-    
+        self.paper_pdf = paper_pdf
         self.max_token_num = 4097
         self.encoding = tiktoken.get_encoding("gpt2")
 
 
     def review_by_chatgpt(self, paper_list):
-        text = self.extract_chapter(paper_list)
+        text = self.extract_chapter(self.paper_pdf)
         chat_review_text, total_token_used = self.chat_review(text=text)            
         return chat_review_text, total_token_used
 
