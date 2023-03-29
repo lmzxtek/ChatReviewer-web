@@ -64,7 +64,7 @@ class Reviewer:
     def extract_chapter(self, pdf_path):
         with open(pdf_path, 'rb') as file:
             # 创建一个PDF阅读器对象
-            pdf_reader = PyPDF2.PdfReader(file)
+            pdf_reader = PyPDF2.PdfReader(pdf_path)
             # 获取PDF的总页数
             num_pages = len(pdf_reader.pages)
             # 初始化提取状态和提取文本
