@@ -39,7 +39,7 @@ class Reviewer:
         openai.api_key = self.api   # 读取api
         review_prompt_token = 1000        
         text_token = len(self.encoding.encode(text))
-        input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/text_token)
+        input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/(text_token+1))
         input_text = "This is the paper for your review:" + text[:input_text_index]
         messages=[
                 {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format +" Must be output in {}.".format(self.language)},
