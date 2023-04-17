@@ -150,7 +150,6 @@ title = "🤖ChatReviewer🤖"
 # 描述
 
 description = '''<div align='left'>
-<img align='right' src='http://i.imgtg.com/2023/03/22/94PLN.png' width="270">
 
 <strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。</strong>其用途如下：
 
@@ -158,9 +157,7 @@ description = '''<div align='left'>
 
 ⭐️对自己的论文进行评审，根据ChatReviewer生成的审稿意见进行查漏补缺，进一步提高自己的论文质量。
 
-⭐️辅助论文审稿，给出参考意见，提高审稿效率和质量。（🈲：禁止直接复制生成的评论用于任何论文审稿工作！）
-
-如果觉得很卡，可以点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！
+如果觉得很卡，可以点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！（🈲：禁止直接复制生成的评论用于任何论文审稿工作！）
 
 本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star和Fork，也欢迎大佬赞助让本项目快速成长！💗（[获取Api Key](https://chatgpt.cn.obiscr.com/blog/posts/2023/How-to-get-api-key/)）
 </div>
