@@ -52,7 +52,7 @@ class Reviewer:
         )
         result = ''
         for choice in response.choices:
-            result += choice.message.content
+            result += choice.message.content + "\n伦理声明/Ethics statement：\n--禁止直接复制生成的评论用于任何论文审稿工作！\n--Direct copying of generated comments for any paper review work is prohibited!"
         print("********"*10)
         print(result)
         print("********"*10)
