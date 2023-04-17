@@ -13,6 +13,33 @@ import tiktoken
 import PyPDF2
 import gradio
 
+
+def contains_chinese(text):
+    for ch in text:
+        if u'\u4e00' <= ch <= u'\u9fff':
+            return True
+    return False
+
+def insert_sentence(text, sentence, interval):
+    if contains_chinese(text):
+        words = list(jieba.cut(text))
+        separator = ''
+    else:
+        words = text.split()
+        separator = ' '
+
+    new_words = []
+    count = 0
+
+    for word in words:
+        new_words.append(word)
+        count += 1
+
+        if count % interval == 0:
+            new_words.append(sentence)
+
+    return separator.join(new_words)
+    
 # 定义Reviewer类
 class Reviewer:
     # 初始化方法，设置属性
@@ -66,31 +93,7 @@ class Reviewer:
         
         return result, response.usage.total_tokens        
 
-    def contains_chinese(self, text):
-        for ch in text:
-            if u'\u4e00' <= ch <= u'\u9fff':
-                return True
-        return False
-    
-    def insert_sentence(self, text, sentence, interval):
-        if contains_chinese(text):
-            words = list(jieba.cut(text))
-            separator = ''
-        else:
-            words = text.split()
-            separator = ' '
-    
-        new_words = []
-        count = 0
-    
-        for word in words:
-            new_words.append(word)
-            count += 1
-    
-            if count % interval == 0:
-                new_words.append(sentence)
-    
-        return separator.join(new_words)
+
         
         
 
