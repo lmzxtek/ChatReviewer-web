@@ -151,11 +151,11 @@ title = "🤖ChatReviewer🤖"
 
 description = '''<div align='left'>
 
-<strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的论文自动评审AI助手。</strong>其用途如下：
+<strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的智能论文分析与建议助手。</strong>其用途如下：
 
-⭐️对论文进行快速总结和评审，提高科研人员的文献阅读和理解的效率，紧跟研究前沿。
+⭐️对论文的优缺点进行快速总结和分析，提高科研人员的文献阅读和理解的效率，紧跟研究前沿。
 
-⭐️对自己的论文进行评审，根据ChatReviewer生成的审稿意见进行查漏补缺，进一步提高自己的论文质量。
+⭐️对自己的论文进行分析，根据ChatReviewer生成的改进建议进行查漏补缺，进一步提高自己的论文质量。
 
 如果觉得很卡，可以点击右上角的Duplicate this Space，把ChatReviewer复制到你自己的Space中！（🈲：禁止直接复制生成的评论用于任何论文审稿工作！）
 
