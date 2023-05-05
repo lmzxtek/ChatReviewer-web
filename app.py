@@ -150,7 +150,7 @@ title = "🤖ChatReviewer🤖"
 # 描述
 
 description = '''<div align='left'>
-
+<img align='right' src='http://i.imgtg.com/2023/03/22/94PLN.png' width="220">
 <strong>ChatReviewer是一款基于ChatGPT-3.5的API开发的智能论文分析与建议助手。</strong>其用途如下：
 
 ⭐️对论文的优缺点进行快速总结和分析，提高科研人员的文献阅读和理解的效率，紧跟研究前沿。
