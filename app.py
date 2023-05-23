@@ -194,7 +194,7 @@ The paper is scored on a scale of 1-10, with 10 being the full mark, and 6 stand
 xxx"""
     ),
     gradio.inputs.File(label="请上传论文PDF(必填)",type="bytes"),
-    gradio.inputs.Radio(choices=["English", "Chinese"],
+    gradio.inputs.Radio(choices=["English", "中文"],
                         default="English",
                         label="选择输出语言"),
 ]
