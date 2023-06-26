@@ -76,8 +76,8 @@ class Reviewer:
         input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/(text_token+1))
         input_text = "This is the paper for your review:" + text[:input_text_index] 
         messages=[
-                {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format +" The output language must be {}.".format(self.language)},
-                {"role": "user", "content": input_text},
+                {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format},
+                {"role": "user", "content": input_text + " The output language must be {}.".format(self.language)},
             ]
                 
         response = openai.ChatCompletion.create(
@@ -195,7 +195,7 @@ The paper is scored on a scale of 1-10, with 10 being the full mark, and 6 stand
 xxx"""
     ),
     gradio.inputs.File(label="请上传论文PDF(必填)",type="bytes"),
-    gradio.inputs.Radio(choices=["English", "Chinese"],
+    gradio.inputs.Radio(choices=["English", "中文"],
                         default="English",
                         label="选择输出语言"),
 ]
