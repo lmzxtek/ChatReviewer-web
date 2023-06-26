@@ -77,7 +77,7 @@ class Reviewer:
         input_text = "This is the paper for your review:" + text[:input_text_index] 
         messages=[
                 {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format},
-                {"role": "user", "content": input_text + " The output language must be {}.".format(self.language)},
+                {"role": "user", "content": input_text + " Translate the output into {}.".format(self.language)},
             ]
                 
         response = openai.ChatCompletion.create(
