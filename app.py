@@ -161,6 +161,8 @@ description = '''<div align='left'>
 本项目的[Github](https://github.com/nishiwen1214/ChatReviewer)，欢迎Star和Fork，也欢迎大佬赞助让本项目快速成长！💗
 
 **很多人留言没有ChatGPT的API-key....不会申请API的可以加我微信"Shiwen_Ni"(注：本人不卖号，真不会的可以找我，备注api)**
+
+⭐️右边生成框进度条拉满之后，显示Error，99%是你的ChatGPT的API免费额度用完或者过期了⭐️
 </div>
 '''
 
