@@ -95,8 +95,8 @@ class Reviewer:
             usage = response.usage.total_tokens
         except Exception as e:  
         # 处理其他的异常  
-            result = str(e))
-            usage  = str(e))
+            result = str(e)
+            usage  = str(e)
         print("********"*10)
         print(result)
         print("********"*10)
@@ -205,7 +205,7 @@ The paper is scored on a scale of 1-10, with 10 being the full mark, and 6 stand
 xxx"""
     ),
     gradio.inputs.File(label="请上传论文PDF(必填)",type="bytes"),
-    gradio.inputs.Radio(choices=["English", "Chinese"],
+    gradio.inputs.Radio(choices=["English", "Chinese", "French", "German","Japenese"],
                         default="English",
                         label="选择输出语言"),
 ]
