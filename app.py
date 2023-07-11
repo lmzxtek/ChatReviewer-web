@@ -132,6 +132,8 @@ class Reviewer:
 
 def main(api, review_format, paper_pdf, language):  
     start_time = time.time()
+    comments = ''
+    output2 = ''
     if not api or not review_format or not paper_pdf:
         comments =  "请输入完整内容！"
     # 判断PDF文件
