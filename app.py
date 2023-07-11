@@ -99,12 +99,7 @@ class Reviewer:
             usage  = str(e)
         print("********"*10)
         print(result)
-        print("********"*10)
-        print("prompt_token_used:", response.usage.prompt_tokens)
-        print("completion_token_used:", response.usage.completion_tokens)
-        print("total_token_used:", response.usage.total_tokens)
-        print("response_time:", response.response_ms/1000.0, 's')    
-        
+        print("********"*10)      
         return result, usage     
 
 
