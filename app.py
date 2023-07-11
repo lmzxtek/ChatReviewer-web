@@ -135,7 +135,8 @@ def main(api, review_format, paper_pdf, language):
     comments = ''
     output2 = ''
     if not api or not review_format or not paper_pdf:
-        comments,output2 =  "⚠：API-key或审稿要求或论文pdf未输入！请检测！"
+        comments =  "⚠：API-key或审稿要求或论文pdf未输入！请检测！"
+        output2 =  "⚠：API-key或审稿要求或论文pdf未输入！请检测！"
     # 判断PDF文件
     else:
         # 创建一个Reader对象
