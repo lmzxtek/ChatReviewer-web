@@ -95,7 +95,7 @@ class Reviewer:
             usage = response.usage.total_tokens
         except Exception as e:  
         # 处理其他的异常  
-            result = "非常抱歉>_<，生了一个错误："+ str(e)
+            result = "⚠：非常抱歉>_<，生了一个错误："+ str(e)
             usage  = 'xxxxx'
         print("********"*10)
         print(result)
@@ -135,7 +135,7 @@ def main(api, review_format, paper_pdf, language):
     comments = ''
     output2 = ''
     if not api or not review_format or not paper_pdf:
-        comments =  "请输入完整内容！"
+        comments =  "⚠：API-key或审稿要求或论文pdf未输入！请检测！"
     # 判断PDF文件
     else:
         # 创建一个Reader对象
