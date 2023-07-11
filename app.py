@@ -140,8 +140,8 @@ def main(api, review_format, paper_pdf, language):
         reviewer1 = Reviewer(api, review_format, paper_pdf, language)
         # 开始判断是路径还是文件：   
         comments, total_token_used = reviewer1.review_by_chatgpt(paper_list=paper_pdf)
-    time_used = time.time() - start_time
-    output2 ="使用token数："+ str(total_token_used)+"\n花费时间："+ str(round(time_used, 2)) +"秒"
+        time_used = time.time() - start_time
+        output2 ="使用token数："+ str(total_token_used)+"\n花费时间："+ str(round(time_used, 2)) +"秒"
     return comments, output2
         
 
