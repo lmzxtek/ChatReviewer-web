@@ -199,7 +199,7 @@ The questions should be formulated in a manner that, after the authors have answ
 The paper is scored on a scale of 1-10, with 10 being the full mark, and 6 stands for borderline accept. Then give the reason for your rating.
 xxx"""
     ),
-    gradio.inputs.File(label="请上传论文PDF文件(请务必等pdf上次完成后再点击Submit！)",type="bytes"),
+    gradio.inputs.File(label="请上传论文PDF文件(请务必等pdf上传完成后再点击Submit！)",type="bytes"),
     gradio.inputs.Radio(choices=["English", "Chinese", "French", "German","Japenese"],
                         default="English",
                         label="选择输出语言"),
