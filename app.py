@@ -95,8 +95,8 @@ class Reviewer:
             usage = response.usage.total_tokens
         except Exception as e:  
         # 处理其他的异常  
-            result = str(e)
-            usage  = str(e)
+            result = "非常抱歉>_<，生了一个错误："+ str(e)
+            usage  = 'xxxxx'
         print("********"*10)
         print(result)
         print("********"*10)      
