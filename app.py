@@ -55,7 +55,7 @@ class Reviewer:
 
         self.language = language
         self.paper_pdf = paper_pdf
-        self.max_token_num = 4097
+        self.max_token_num = 14097
         self.encoding = tiktoken.get_encoding("gpt2")
 
 
@@ -84,8 +84,9 @@ class Reviewer:
             ]
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model="gpt-3.5-turbo-16k",
                 messages=messages,
+                temperature=0.7
             )
             result = ''
             for choice in response.choices:
