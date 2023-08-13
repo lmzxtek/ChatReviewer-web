@@ -76,7 +76,7 @@ class Reviewer:
             text_token = len(self.encoding.encode(text))
         except:
             text_token = 10000
-        input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/(text_token+1))
+        input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/(text_token+1)) - 2000
         input_text = "This is the paper for your review:" + text[:input_text_index] 
         messages=[
                 {"role": "system", "content": "You are a professional reviewer. Now I will give you a paper. You need to give a complete review opinion according to the following requirements and format:"+ self.review_format + "Be sure to use {} answers".format(self.language)} ,
