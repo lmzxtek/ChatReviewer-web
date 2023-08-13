@@ -55,7 +55,7 @@ class Reviewer:
 
         self.language = language
         self.paper_pdf = paper_pdf
-        self.max_token_num = 14097
+        self.max_token_num = 13000
         self.encoding = tiktoken.get_encoding("gpt2")
 
 
@@ -75,7 +75,7 @@ class Reviewer:
         try:
             text_token = len(self.encoding.encode(text))
         except:
-            text_token = 3000
+            text_token = 10000
         input_text_index = int(len(text)*(self.max_token_num-review_prompt_token)/(text_token+1))
         input_text = "This is the paper for your review:" + text[:input_text_index] 
         messages=[
