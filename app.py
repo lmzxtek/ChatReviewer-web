@@ -55,7 +55,7 @@ class Reviewer:
 
         self.language = language
         self.paper_pdf = paper_pdf
-        self.max_token_num = 13000
+        self.max_token_num = 12000
         self.encoding = tiktoken.get_encoding("gpt2")
 
 
