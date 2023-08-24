@@ -1,0 +1,17 @@
+{
+  "name": "chatreviewer-web",
+  "version": 2,
+  "framework": gradio,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "app.py"
+    }
+  ]
+}
