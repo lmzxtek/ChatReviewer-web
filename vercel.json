@@ -1,7 +1,7 @@
 {
   "name": "chatreviewer-web",
   "version": 2,
-  "framework": gradio,
+  "framework": null,
   "builds": [
     {
       "src": "app.py",
